@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "UploadCSVFile";
+}
+
+<h2>Bulk Processing - Monthly Payslips</h2>
+<br /><br />
+@using (Html.BeginForm("ProcessCsv", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h2>Import Using CSV</h2>
+    <div class="control-group">
+        <div class="controls">
+            <input id="model" type="file" accept="csv" name="model" data-val="true" data-val-required="File is required" />
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Import" />
+}
