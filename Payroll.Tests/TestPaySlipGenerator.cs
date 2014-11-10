@@ -122,41 +122,55 @@ namespace Payroll.Tests
 
         }
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        //[ExpectedException(typeof(FormatException))]
         public void TestPaySlipGenerator_negativeAnnualSalary()
         {
             //Arrange
             IPaySlipGenerator paySlip = getTestObject();
+            List<Employee> empList;
             Employee emp = setEmployeeAttributes_NegativeAnnualSalary();
 
             //Act
-            paySlip.GeneratePaySlip(emp);
+            empList = paySlip.GeneratePaySlip(emp);
+
+            //Assert
+            Assert.AreEqual(null, empList);
 
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        //[ExpectedException(typeof(FormatException))]
         public void TestPaySlipGenerator_negativeSuperRate()
         {
             //Arrange
             IPaySlipGenerator paySlip = getTestObject();
+            List<Employee> empList;
+
             Employee emp = setEmployeeAttributes_NegativeSuperRate();
 
             //Act
-            paySlip.GeneratePaySlip(emp);
+            empList = paySlip.GeneratePaySlip(emp);
 
+            //Assert
+            Assert.AreEqual(null, empList);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        //[ExpectedException(typeof(FormatException))]
         public void TestPaySlipGenerator_SuperRate_GreaterThan_50()
         {
             //Arrange
             IPaySlipGenerator paySlip = getTestObject();
+            List<Employee> empList;
+
             Employee emp = setEmployeeAttributes_SuperRate_GreaterThan_50();
 
+
             //Act
-            paySlip.GeneratePaySlip(emp);
+            empList=paySlip.GeneratePaySlip(emp);
+
+            //Assert
+            Assert.AreEqual(null, empList);
 
         }
     }
